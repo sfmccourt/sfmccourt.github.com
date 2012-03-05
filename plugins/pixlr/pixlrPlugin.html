@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="../orion/plugin.js"></script>
+	<script>
+	/*global eclipse window*/
+	var VERSION = "0.4";
+
+	function qualifyURL(url){
+	    var a = document.createElement('a');
+	    a.href = url; // set string url
+	    return a.href;
+	}
+	
+	window.onload = function() {
+		var serviceImpl = { /* All data is in properties */ };
+
+		var provider = new eclipse.PluginProvider();
+				
+		provider.registerServiceProvider("orion.edit.editor", {}, {
+			id: "orion.pixlr",
+			name: "Pixlr Image Editor",
+			uriTemplate: "http://pixlr.com/editor/?image=" + qualifyURL("..") +"{Location}"});
+			
+		provider.registerServiceProvider("orion.edit.editor", {}, {
+			id: "orion.pixlr.express",
+			name: "Pixlr Express Image Editor",
+			uriTemplate: "http://pixlr.com/express/?image=" + qualifyURL("..") +"{Location}"});
+	
+		provider.registerServiceProvider("orion.navigate.openWith", {}, {
+				editor: "orion.pixlr",
+				contentType: ["image.gif", "image.jpeg", "image.ico", "image.png","image.tiff"]});
+				
+		provider.registerServiceProvider("orion.navigate.openWith", {}, {
+				editor: "orion.pixlr.express",
+				contentType: ["image.gif", "image.jpeg", "image.ico", "image.png","image.tiff"]});
+
+		provider.connect();
+	};
+	</script>
+</head>
+<body>
+</body>
+</html>

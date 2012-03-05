@@ -1,4 +1,5 @@
 /*******************************************************************************
+ * @license
  * Copyright (c) 2011 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials are made 
  * available under the terms of the Eclipse Public License v1.0 
@@ -91,6 +92,8 @@ eclipse.PluginProvider = function(metadata) {
 				}, function(error) {
 					response.error = error ? JSON.parse(JSON.stringify(error)) : error; // sanitizing Error object 
 					_publish(response);
+				}, function() {
+					_publish({requestId: message.id, method: "progress", params: Array.prototype.slice.call(arguments)});
 				});
 			} else {
 				response.result = promiseOrResult;
@@ -135,7 +138,9 @@ eclipse.PluginProvider = function(metadata) {
 		} else if (window.opener !== null) {
 			_target = window.opener;
 		} else {
-			errback("No valid plugin target");
+			if (errback) {
+				errback("No valid plugin target");
+			}
 			return;
 		}
 		addEventListener("message", _handleRequest, false);
