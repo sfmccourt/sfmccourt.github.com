@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="../orion/plugin.js"></script>
-	<script>
-	/*global eclipse window*/
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<script src="http://orionhub.org/orion/plugin.js"></script> 
+	<script> 
+/*******************************************************************************
+ * Copyright (c) 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials are made 
+ * available under the terms of the Eclipse Public License v1.0 
+ * (http://www.eclipse.org/legal/epl-v10.html), and the Eclipse Distribution 
+ * License v1.0 (http://www.eclipse.org/org/documents/edl-v10.html). 
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
+ /*global eclipse window*/
 	var VERSION = "0.4";
 
 	function qualifyURL(url){
@@ -39,7 +49,12 @@
 		provider.connect();
 	};
 	</script>
+	<title>Pixlr Plugin</title>
 </head>
-<body>
-</body>
+<body><h1>Pixlr plugin for Orion</h1>
+<p>This is a plugin for <a href="http://wiki.eclipse.org/Orion/">Orion</a>. It is not meant to be viewed in a browser.</p>
+<p>To install this plugin, follow <a href="http://wiki.eclipse.org/Orion/How_Tos/Installing_A_Plugin">these instructions</a> using this URL:</p>
+<p id="url" style="font-family: monospace; font-size: large; padding-left:2em;"></p>
+<p><em>Requires Orion 0.4</em></p>
+</body> 
 </html>
