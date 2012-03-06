@@ -25,8 +25,9 @@
 		provider.registerServiceProvider("orion.page.content", {}, {
 			id: "orion.pixlr.content",
 			name: "Pixlr",
-			saveToken: "?image",
-			uriTemplate: "http://pixlr.com/editor/?image={HostQualifier}{Location}&referrer=Orion&title={Location}&lockTitle=true&target={SaveURL}&exit={HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
+			saveToken: "&image",
+			saveTokenTerminator: "&",
+			uriTemplate: "http://pixlr.com/editor/?image={HostQualifier}{Location}&referrer=Orion&title={Location}&lockTitle&target={SaveURL}&exit={HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
 	
 		provider.registerServiceProvider("orion.page.content", {}, {
 			id: "orion.pixlr.express.content",
