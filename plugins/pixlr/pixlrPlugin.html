@@ -15,7 +15,7 @@
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
  /*global eclipse window*/
-	var VERSION = "0.4";
+	var VERSION = "0.5";
 
 	function qualifyURL(url){
 	    var a = document.createElement('a');
@@ -27,16 +27,26 @@
 		var serviceImpl = { /* All data is in properties */ };
 
 		var provider = new eclipse.PluginProvider();
-				
+		
+		provider.registerServiceProvider("orion.page.content", {}, {
+			id: "orion.pixlr.content",
+			name: "Pixlr",
+			uriTemplate: "http://pixlr.com/editor/?image={HostQualifier}{Location}"});
+	
+		provider.registerServiceProvider("orion.page.content", {}, {
+			id: "orion.pixlr.express.content",
+			name: "Pixlr Express",
+			uriTemplate: "http://pixlr.com/express/?image={HostQualifier}{Location}"});
+
 		provider.registerServiceProvider("orion.edit.editor", {}, {
 			id: "orion.pixlr",
 			name: "Pixlr Image Editor",
-			uriTemplate: "http://pixlr.com/editor/?image=" + qualifyURL("..") +"{Location}"});
+			uriTemplate: qualifyURL("../content/content.html#") + "{Location},contentProvider=orion.pixlr.content"});
 			
 		provider.registerServiceProvider("orion.edit.editor", {}, {
 			id: "orion.pixlr.express",
 			name: "Pixlr Express Image Editor",
-			uriTemplate: "http://pixlr.com/express/?image=" + qualifyURL("..") +"{Location}"});
+			uriTemplate: qualifyURL("../content/content.html#") + "{Location},contentProvider=orion.pixlr.express.content"});
 	
 		provider.registerServiceProvider("orion.navigate.openWith", {}, {
 				editor: "orion.pixlr",
