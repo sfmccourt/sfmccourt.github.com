@@ -25,7 +25,8 @@
 		provider.registerServiceProvider("orion.page.content", {}, {
 			id: "orion.pixlr.content",
 			name: "Pixlr",
-			uriTemplate: "http://pixlr.com/editor/?image={HostQualifier}{Location}"});
+			saveToken: "?image",
+			uriTemplate: "http://pixlr.com/editor/?image={HostQualifier}{Location}&referrer=Orion&title={Location}&lockTitle=true&target={SaveURL}&exit={HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
 	
 		provider.registerServiceProvider("orion.page.content", {}, {
 			id: "orion.pixlr.express.content",
@@ -41,7 +42,7 @@
 			id: "orion.pixlr.express",
 			name: "Pixlr Express Image Editor",
 			uriTemplate: "{HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.express.content"});
-	
+
 		provider.registerServiceProvider("orion.navigate.openWith", {}, {
 				editor: "orion.pixlr",
 				contentType: ["image.gif", "image.jpeg", "image.ico", "image.png","image.tiff"]});
@@ -59,6 +60,6 @@
 <p>This is a plugin for <a href="http://wiki.eclipse.org/Orion/">Orion</a>. It is not meant to be viewed in a browser.</p>
 <p>To install this plugin, follow <a href="http://wiki.eclipse.org/Orion/How_Tos/Installing_A_Plugin">these instructions</a> using this URL:</p>
 <p id="url" style="font-family: monospace; font-size: large; padding-left:2em;"></p>
-<p><em>Requires latest in Orion 0.5 stream ("orion.page.content" service extension)</em></p>
+<p><em>Requires Orion 0.5 stream.  See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=372914">Bug 372914</a></em></p>
 </body> 
 </html>
