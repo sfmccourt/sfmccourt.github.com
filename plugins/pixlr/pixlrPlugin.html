@@ -17,12 +17,6 @@
  /*global eclipse window*/
 	var VERSION = "0.5";
 
-	function qualifyURL(url){
-	    var a = document.createElement('a');
-	    a.href = url; // set string url
-	    return a.href;
-	}
-	
 	window.onload = function() {
 		var serviceImpl = { /* All data is in properties */ };
 
@@ -41,12 +35,12 @@
 		provider.registerServiceProvider("orion.edit.editor", {}, {
 			id: "orion.pixlr",
 			name: "Pixlr Image Editor",
-			uriTemplate: qualifyURL("../content/content.html#") + "{Location},contentProvider=orion.pixlr.content"});
+			uriTemplate: "{HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
 			
 		provider.registerServiceProvider("orion.edit.editor", {}, {
 			id: "orion.pixlr.express",
 			name: "Pixlr Express Image Editor",
-			uriTemplate: qualifyURL("../content/content.html#") + "{Location},contentProvider=orion.pixlr.express.content"});
+			uriTemplate: "{HostQualifier}/content/content.html#{Location},contentProvider=orion.pixlr.express.content"});
 	
 		provider.registerServiceProvider("orion.navigate.openWith", {}, {
 				editor: "orion.pixlr",
@@ -65,6 +59,6 @@
 <p>This is a plugin for <a href="http://wiki.eclipse.org/Orion/">Orion</a>. It is not meant to be viewed in a browser.</p>
 <p>To install this plugin, follow <a href="http://wiki.eclipse.org/Orion/How_Tos/Installing_A_Plugin">these instructions</a> using this URL:</p>
 <p id="url" style="font-family: monospace; font-size: large; padding-left:2em;"></p>
-<p><em>Requires Orion 0.4</em></p>
+<p><em>Requires latest in Orion 0.5 stream ("orion.page.content" service extension)</em></p>
 </body> 
 </html>
