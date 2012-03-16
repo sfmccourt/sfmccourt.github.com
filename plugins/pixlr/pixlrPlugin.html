@@ -27,14 +27,14 @@
 			name: "Pixlr",
 			saveToken: ["imgapi?image=","imgapi&image="],
 			saveTokenTerminator: "&",
-			uriTemplate: "http://pixlr.com/editor/?image={OrionHome}{Location}&referrer=Orion&title={Location}&lockTitle&target={SaveURL}imgapi&exit={OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
+			uriTemplate: "http://pixlr.com/editor/?image={OrionHome}{Location}&referrer=Orion&title={Name}&lockTitle&target={SaveURL}imgapi&exit={OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
 	
 		provider.registerServiceProvider("orion.page.content", {}, {
 			id: "orion.pixlr.express.content",
 			name: "Pixlr Express",
 			saveToken: ["imgapi?image=","imgapi&image="],
 			saveTokenTerminator: "&",
-			uriTemplate: "http://pixlr.com/express/?image={OrionHome}{Location}&referrer=Orion&title={Location}&lockTitle&target={SaveURL}imgapi&exit={OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.express.content"});
+			uriTemplate: "http://pixlr.com/express/?image={OrionHome}{Location}&referrer=Orion&title={Name}&lockTitle&target={SaveURL}imgapi&exit={OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.express.content"});
 
 		provider.registerServiceProvider("orion.edit.editor", {}, {
 			id: "orion.pixlr",
