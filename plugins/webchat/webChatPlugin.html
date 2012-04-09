@@ -18,6 +18,7 @@
 	var VERSION = "0.5";
 
 	window.onload = function() {
+	
 		var serviceImpl = { /* All data is in properties */ };
 
 		var provider = new eclipse.PluginProvider();
@@ -30,7 +31,7 @@
 		provider.registerServiceProvider("orion.page.link", serviceImpl, {
 			name: "Webchat",
 			id: "orion.webchat.link",
-			href: "{OrionHome}/content/content.html#,contentProvider=orion.webchat.content"
+			uriTemplate: "{OrionHome}/content/content.html#,contentProvider=orion.webchat.content"
 		});
 		provider.connect();
 	};
