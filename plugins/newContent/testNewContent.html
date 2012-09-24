@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="../orion/plugin.js"></script>
+	<script>
+	/*global eclipse window*/
+	var VERSION = "1.0";
+	
+	window.onload = function() {
+		var provider = new orion.PluginProvider();
+		var temp = document.createElement('a');
+		temp.href = "testContent.zip";
+
+		provider.registerService("orion.navigate.content", null, {
+			id: "orion.content.test",
+			name: "Another Exemplary Sample Site",
+			description: "Generate a sample site from Susan's test plugin.",
+			folder: "Test New Content",
+			command: "orion.importZipURL",
+			parameters: [{name: "url", type: "url", label: "Extracted from:", defaultValue: temp.href},
+				{name: "unzip", type: "boolean", label: "Unzip:", defaultValue: true}]
+		});
+		provider.connect();
+	};
+	</script>
+</head>
+<body>
+</body>
+</html>
