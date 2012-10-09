@@ -22,35 +22,45 @@
 
 		var provider = new eclipse.PluginProvider();
 		
-		provider.registerServiceProvider("orion.page.content", {}, {
+		provider.registerService("orion.page.content", {}, {
 			id: "orion.pixlr.content",
 			name: "Pixlr",
 			saveToken: [{token: "imgapi?image=", terminator: "&"}, {token: "imgapi&image=", terminator: "&"}],
 			uriTemplate: "http://pixlr.com/editor/?image={OrionHome}{Location}&referrer=Orion&title={Name}&exit={ExitURL}&target={SaveURL}imgapi&locktitle=true,contentProvider=orion.pixlr.content"});
 	
-		provider.registerServiceProvider("orion.page.content", {}, {
+		provider.registerService("orion.page.content", {}, {
 			id: "orion.pixlr.express.content",
 			name: "Pixlr Express",
 			saveToken: [{token: "imgapi?image=", terminator: "&"}, {token: "imgapi&image=", terminator: "&"}],
 			uriTemplate: "http://pixlr.com/express/?image={OrionHome}{Location}&referrer=Orion&title={Name}&exit={ExitURL}&target={SaveURL}imgapi&locktitle=true,contentProvider=orion.pixlr.express.content"});
 
-		provider.registerServiceProvider("orion.edit.editor", {}, {
+		provider.registerService("orion.edit.editor", {}, {
 			id: "orion.pixlr",
 			name: "Pixlr Image Editor",
 			uriTemplate: "{OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.content"});
 			
-		provider.registerServiceProvider("orion.edit.editor", {}, {
+		provider.registerService("orion.edit.editor", {}, {
 			id: "orion.pixlr.express",
 			name: "Pixlr Express Image Editor",
 			uriTemplate: "{OrionHome}/content/content.html#{Location},contentProvider=orion.pixlr.express.content"});
+			
+		provider.registerService("orion.core.contenttype", {}, {
+			contentTypes:
+				// Image type for layered pixlr image
+				[{	id: "image/pxd",
+					name: "PXD",
+					extension: ["pxd"],
+					image: "../images/wtp/image.gif"
+				}]
+		});
 
-		provider.registerServiceProvider("orion.navigate.openWith", {}, {
+		provider.registerService("orion.navigate.openWith", {}, {
 				editor: "orion.pixlr",
-				contentType: ["image/gif", "image/jpeg", "image/ico", "image/png","image/tiff"]});
+				contentType: ["image/pxd", "image/jpeg", "image/png"]});
 				
-		provider.registerServiceProvider("orion.navigate.openWith", {}, {
+		provider.registerService("orion.navigate.openWith", {}, {
 				editor: "orion.pixlr.express",
-				contentType: ["image/gif", "image/jpeg", "image/ico", "image/png","image/tiff"]});
+				contentType: ["image/pxd", "image/jpeg", "image/png"]});
 
 		provider.connect();
 	};
@@ -61,6 +71,6 @@
 <p>This is a plugin for <a href="http://wiki.eclipse.org/Orion/">Orion</a>. It is not meant to be viewed in a browser.</p>
 <p>To install this plugin, follow <a href="http://wiki.eclipse.org/Orion/How_Tos/Installing_A_Plugin">these instructions</a> using this URL:</p>
 <p id="url" style="font-family: monospace; font-size: large; padding-left:2em;"></p>
-<p><em>Requires Orion 0.5 stream.  See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=372914">Bug 372914</a></em></p>
+<p><em>Requires Orion 1.0 stream.</em></p>
 </body> 
 </html>
