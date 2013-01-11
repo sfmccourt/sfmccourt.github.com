@@ -12,14 +12,11 @@
 		var temp = document.createElement('a');
 		temp.href = "testContent.zip";
 
-		provider.registerService("orion.navigate.content", null, {
+		provider.registerService("orion.core.content", null, {
 			id: "orion.content.test",
 			name: "Another Exemplary Sample Site",
 			description: "Generate a sample site from Susan's test plugin.",
-			folder: "Test New Content",
-			command: "orion.importZipURL",
-			parameters: [{name: "url", type: "url", label: "Extracted from:", defaultValue: temp.href},
-				{name: "unzip", type: "boolean", label: "Unzip:", defaultValue: true}]
+			contentURITemplate: temp.href
 		});
 		provider.connect();
 	};
